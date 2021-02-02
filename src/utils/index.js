@@ -1,6 +1,8 @@
+// 保存data到localStorage
 export function saveDataToStorage (key, value) {
   window.localStorage.setItem(key, JSON.stringify(value))
 }
+// 从localStorage获取数据
 export function getDataFromStorage (key) {
   let res = window.localStorage.getItem(key)
   if (res) {
@@ -8,11 +10,11 @@ export function getDataFromStorage (key) {
   }
   return res
 }
-
+// 从localStorage中移除数据
 export function removeStorageDataByKey (key) {
   window.localStorage.removeItem(key)
 }
-
+// 格式化日期
 export function formatDate (dateStr) {
   const date = new Date(dateStr)
   let res = ''
@@ -21,7 +23,7 @@ export function formatDate (dateStr) {
   res += date.getDate()
   return res
 }
-
+// 格式化好周数据：{日：数据量}
 export function formatWeekData (arr) {
   let month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   const date = new Date()

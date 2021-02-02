@@ -44,18 +44,17 @@ export default {
       }
     }
   },
-  components: {
-
-  },
   methods: {
     ...mapActions([
       'saveUserId'
     ]),
     submitForm (formName) {
+      // 校验输入
       this.$refs[formName].validate(async (valid) => {
         if (!valid) {
           return false
         }
+        // 请求登陆
         const res = await adminLogin(this.loginForm.account, this.loginForm.password)
         if (res.status === 0) {
           Message.success({

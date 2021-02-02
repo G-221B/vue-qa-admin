@@ -35,6 +35,7 @@ export default {
   },
   props: ['question'],
   computed: {
+    // format数据
     formatQuestion () {
       return this.question.map(item => {
         item.q_time = formatDate(item.q_time)
@@ -43,6 +44,7 @@ export default {
     }
   },
   methods: {
+    // 删除选中
     deleteSelect () {
       const ids = []
       this.$refs.questionRef.selection.forEach(item => {
@@ -50,10 +52,12 @@ export default {
       })
       this.$emit('delete', ids)
     },
+    // 删除改行
     handleDelete (index) {
       const ids = [this.question[index].q_id]
       this.$emit('delete', ids)
     },
+    // 查看问题详情
     getDetail (index) {
       this.dialogVisible = true
       this.content = this.question[index].q_content

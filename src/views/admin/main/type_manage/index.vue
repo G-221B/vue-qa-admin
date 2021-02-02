@@ -39,6 +39,7 @@ export default {
 
   },
   computed: {
+    // format数据
     formatTypes () {
       return this.types.map(item => {
         item.create_time = formatDate(item.create_time)
@@ -50,6 +51,7 @@ export default {
     this.getTypes()
   },
   methods: {
+    // 创建
     async onCreate () {
       const type_name = this.type.name
       const res = await createNewType(type_name)
@@ -62,6 +64,7 @@ export default {
         })
       }
     },
+    // 编辑
     edit (index) {
       const question_tid = this.types[index].question_tid
       this.$prompt('请输入新分区名', '提示', {
@@ -70,7 +73,6 @@ export default {
         inputPattern: /\S{2,10}/,
         inputErrorMessage: '请输入长度2-10的新分区名'
       }).then(async ({ value }) => {
-
         const res = await updateTypeName(question_tid, value)
         if (res.status === 0) {
           this.getTypes()
@@ -81,7 +83,6 @@ export default {
         }
 
       }).catch((err) => {
-        console.log(err)
         this.$message({
           type: 'info',
           message: '取消输入'

@@ -58,20 +58,24 @@ export default {
   components: {
     Result
   },
+  // 获取数据初始化页面
   async created () {
     this.getType()
     this.getQuestion(this.query.id, this.query.username, this.query.t_id, this.query.title, this.pageNum)
   },
   methods: {
+    // 根据条件查询
     onQuery () {
       this.pageNum = 1
       this.getQuestion(this.query.id, this.query.username, this.query.t_id, this.query.title, this.pageNum)
       this.clear()
     },
+    // 页面切换
     pageChange (num) {
       this.pageNum = num
       this.getQuestion(this.query.id, this.query.username, this.query.t_id, this.query.title, this.pageNum)
     },
+    // 批量删除
     deleteQuestions (ids) {
       this.$confirm('此操作将永久删除该提问, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -89,19 +93,20 @@ export default {
           })
         }
       }).catch((err) => {
-        console.log(err)
         this.$message({
           type: 'info',
           message: '已取消删除'
         });
       });
     },
+    // 清空搜索框
     clear () {
       this.query.id = ''
       this.query.username = ''
       this.query.t_id = ''
       this.query.title = ''
     },
+    // 根据条件获取问题
     async getQuestion (id, username, t_id, title, pageNum) {
       const res = await queryQuestion(id, username, t_id, title, pageNum)
       if (res.status === 0) {
@@ -109,6 +114,7 @@ export default {
         this.question = res.data.question
       }
     },
+    // 获取问题分区
     async getType () {
       const res = await getQuestionType()
       if (res.status === 0) {

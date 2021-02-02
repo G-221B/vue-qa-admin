@@ -99,10 +99,12 @@ export default {
     }
   },
   methods: {
+    // 删除改行数据
     handleDelete (index) {
       const ids = [this.user[index].id]
       this.$emit('delete', ids)
     },
+    // 删除选中的数据
     deleteSelect () {
       const ids = []
       this.$refs.multipleTable.selection.forEach(item => {

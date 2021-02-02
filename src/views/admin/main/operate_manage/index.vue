@@ -28,15 +28,14 @@ export default {
       this.userData = formatWeekData(res.data.userData)
       this.questionData = formatWeekData(res.data.questionData)
     }
+    // 等待dom渲染好在画数据图
     this.$nextTick(function () {
-      console.log(res)
-      console.log(this.userData)
-      console.log(this.questionData)
       this.drawLine('user', '注册量', this.userData)
       this.drawLine('question', '提问量', this.questionData)
     })
   },
   methods: {
+    // 封装画线状图
     drawLine (id, title, data) {
       this.charts = echarts.init(document.getElementById(id))
       this.charts.setOption({

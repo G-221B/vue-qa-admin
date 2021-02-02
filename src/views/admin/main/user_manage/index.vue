@@ -81,10 +81,8 @@ export default {
           message: '已取消删除'
         });
       });
-
-
-
     },
+    // 页数change
     pageChange (num) {
       this.pageNum = num
       this.getUserData(account, username, userType, this.pageNum)
@@ -94,6 +92,7 @@ export default {
       this.username = ''
       this.userType = ''
     },
+    // 获取所用的用户
     async getUserData (account, username, userType, pageNum) {
       const res = await getUser(account, username, userType, pageNum)
       if (res.status === 0) {

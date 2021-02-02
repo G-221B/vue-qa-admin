@@ -30,6 +30,7 @@ export default {
     }
   },
   methods: {
+    // 添加用户
     onSubmit () {
       if (this.formInline.account === '' || this.formInline.password === '' || this.formInline.userType === '') {
         return Message.error('请完善输入项')
@@ -37,6 +38,7 @@ export default {
       this.$emit('add', this.formInline.account, this.formInline.password, this.formInline.usertype)
       this.clear()
     },
+    // 清空
     clear () {
       this.formInline.account = ''
       this.formInline.password = ''

@@ -30,6 +30,7 @@ export default {
     }
   },
   methods: {
+    // 查询用户
     onSubmit () {
       this.$emit('query', this.formInline.account, this.formInline.username, this.formInline.usertype)
     }
